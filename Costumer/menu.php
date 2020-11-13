@@ -24,3 +24,4 @@ if(empty($data['user_id'])) {
         <a href='transaksi.php'><i class="fa fa-users" aria-hidden="true"></i> Transaksi </a>
         <a href='data_hewan.php'><i class="fa fa-bug"></i> Data Hewan</a>
     </div>
+</body>
