@@ -4,8 +4,10 @@ session_start();
 error_reporting(0);
 if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='costumer')){
 include '../koneksi.php';
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+$level = $_SESSION['level'];
 ?>
-
 
 <html>
 <head>
@@ -30,16 +32,11 @@ include '../koneksi.php';
 <!-- Konten -->
 <div class="content">
     <div class="main-content">
-        <h5> <?php echo "Selamat Datang " .strtoupper($_SESSION['username']) ?></h5>
+        <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?> 
+        <p>SIPETCARE adalah aplikasi yang siap membantu anda</p>
+      
 
-        <div class="main-content">
-            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
-        </div>
-    
-        <div class="status">
-            <?php echo "Anda login sebagai " .strtoupper($_SESSION['level']) ?>
-        </div>
-    </div>
+    </div>        
 </div>
    
 </body>
