@@ -1,4 +1,4 @@
-
+<body>
     <div class="side-group">
         <img src="../asset/admin/gambar/maula.jpeg">
     </div>
@@ -15,3 +15,4 @@
         <a href='data_costumer_edit.php'><i class="fa fa-users" aria-hidden="true"></i> Transaksi </a>
         <a href='data_hewan.php'><i class="fa fa-bug"></i> Data Hewan</a>
     </div>
+</body>

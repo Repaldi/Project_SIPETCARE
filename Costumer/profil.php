@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 error_reporting(0);
 if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='costumer')){
@@ -26,15 +26,16 @@ include '../koneksi.php';
 
     <div class="main-content">
         <?php
-          
-            $user_id = $_SESSION['id'];
-            $query= mysqli_query($conn, "SELECT * FROM user WHERE id= $user_id ");
+
+            $id_user= $_SESSION['id_user'];
+            $query= mysqli_query($conn, "SELECT * FROM user WHERE id_user = '$id_user' ");
             $data = mysqli_fetch_array($query);
-        ?>    
-   
-    <div class="row">
-        <div class="column">
-        <h2>Profil Saya</h2>
+        ?>
+
+    <form class="row" action="../create.php" method="post">
+        <a class="column">
+
+             <h2>Profil Saya   <input style="width: 95px;" type="submit" value="Edit Profil" class="btn" </a> </h2>
 
                 <label for="username"><i class="fa fa-user"></i> Username</label>
                 <input type="text"  name="username" placeholder="<?php echo $data['username'];?>" Readonly>
@@ -43,10 +44,10 @@ include '../koneksi.php';
                 <input type="text" name="email" placeholder="<?php echo $data['email'];?>" Readonly>
          
                 <label for="nama_lengkap"><i class="fa fa-user"></i> Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" Readonly>
+                <input type="text" name="nama_lengkap" >
 
                 <label for="jenis_kelamin"><i class="fa fa-venus-mars"></i> Jenis Kelamin</label>
-                <input type="text"  name="jenis_kelamin" Readonly>
+                <input type="text"  name="jenis_kelamin">
             
         </div>
            
@@ -63,11 +64,10 @@ include '../koneksi.php';
             <div class="card">
                 <img src="../asset/admin/gambar/maula.jpeg" alt="Foto Profil" width="100%" >
             </div>
-        </div>
-        <input type="submit" value="Edit Profil" class="btn">
-    </div>
-  
 
+    </div>
+
+</form>
     
 </div>
 </div>
@@ -75,7 +75,7 @@ include '../koneksi.php';
 </body>
 </html>
 
-<?php 
+<?php
 }else{
 echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
 }
