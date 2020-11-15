@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='costumer')){
+if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='admin')){
 include '../koneksi.php';
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
@@ -29,7 +29,7 @@ $password = $_SESSION['password'];
 <div class="content">
 
 <?php 
-$query= mysqli_query($conn, "SELECT * FROM costumer WHERE user_id = $user_id");
+$query= mysqli_query($conn, "SELECT * FROM admin WHERE user_id = $user_id");
 $data = mysqli_fetch_array($query);
 if(empty($data['user_id'])) {
 ?>
@@ -86,36 +86,36 @@ if(empty($data['user_id'])) {
 
                 <label for="username"><i class="fa fa-user"></i> Username</label>
                 <input type="text"  name="username" value="<?php echo $username;?>" ReadOnly>
-                
-                <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                <input type="text" name="email" value="<?php echo $email;?>" ReadOnly>
-         
+
                 <label for="nama_lengkap"><i class="fa fa-user"></i> Nama Lengkap</label>
                 <input type="text" name="nama_lengkap" value="<?php echo $data['nama_lengkap']?>" ReadOnly>
 
+         
                 <label for="jenis_kelamin"><i class="fa fa-venus-mars"></i> Jenis Kelamin</label>
                 <input type="text"  name="jenis_kelamin" value="<?php echo $data['jenis_kelamin']?>" ReadOnly>
 
                 <label for="alamat"><i class="fa fa-address-card-o"></i> Alamat</label>
                 <textarea name="alamat"  rows="4" cols="48" ReadOnly> <?php echo $data['alamat']?></textarea>
-            
+                <a class="btn" style=" float:right" href="profil_edit.php?id=<?php echo $data['admin_id']; ?>"><i class="fa fa-edit"> Edit Profil </i></a>
         </div>
            
           
         <div class="column">
         <h2><span style="color:white;">Manipulasi text</span></h2>
 
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" name="email" value="<?php echo $email;?>" ReadOnly>
+            
             <label for="password"><i class="fa fa-user"></i> Password</label>
             <input type="text" name="password" value="<?php echo $password;?>" ReadOnly>
+                
             
             <label for="nomor_hp"><i class="fa fa-telegram"></i> Nomor HP</label>
             <input type="text"  name="nomor_hp"  value="<?php echo $data['nomor_hp']?>" ReadOnly>
             
             <div class="card">
                 <img src="../asset/admin/gambar/<?php echo $data['foto']?>" alt="Foto Profil" width="100%" >
-            </div>
-            
-                <a class="btn" href="profil_edit.php?id=<?php echo $data['costumer_id']; ?>">Edit Profil</a>
+            </div>               
         
         </div>
 

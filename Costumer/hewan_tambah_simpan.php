@@ -4,15 +4,15 @@ session_start();
 include '../koneksi.php';
 
 	// membuat variabel untuk menampung data dari form
-  $user_id      = $_POST['user_id'];
-  $nama_lengkap = $_POST['nama_lengkap'];
-  $jenis_kelamin= $_POST['jenis_kelamin'];
-  $alamat       = $_POST['alamat'];
-  $nomor_hp     = $_POST['nomor_hp'];
-  $foto         = $_FILES['foto']['name'];
+  $costumer_id      = $_POST['costumer_id'];
+  $nama_hewan       = $_POST['nama_hewan'];
+  $jenis_hewan      = $_POST['jenis_hewan'];
+  $umur             = $_POST['umur'];
+  $deskripsi        = $_POST['deskripsi'];
+  $foto             = $_FILES['foto']['name'];
 
 
-//cek dulu jika ada gambar costumer jalankan coding ini
+//cek dulu jika ada gambar hewan jalankan coding ini
 if($foto != "") {
   $ekstensi_diperbolehkan = array('png','jpg','jpeg'); //ekstensi file gambar yang bisa diupload 
   $x = explode('.', $foto); //memisahkan nama file dengan ekstensi yang diupload
@@ -23,31 +23,31 @@ if($foto != "") {
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
                 move_uploaded_file($file_tmp, "../asset/admin/gambar/".$nama_gambar_baru); //memindah file gambar ke folder asset/admin/gambar
                   // jalankan query INSERT untuk menambah data ke database ini harus sesuai urutannya (id tidak perlu karena dibikin otomatis)
-                  $query = "INSERT INTO costumer (costumer_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp','$nama_gambar_baru')";
+                  $query = "INSERT INTO hewan (hewan_id,costumer_id, nama_hewan,jenis_hewan,umur,deskripsi,foto) VALUES ('', '$costumer_id', '$nama_hewan', '$jenis_hewan','$umur','$deskripsi','$nama_gambar_baru')";
                   $result = mysqli_query($conn, $query);
                   // periska query apakah ada error
                   if(!$result){
                       die ("Query gagal dijalankan: ".mysqli_errno($conn).
                            " - ".mysqli_error($conn));
                   } else {
-                    //tampil alert dan akan redirect ke halaman profil.php
-                    echo "<script>alert('Data berhasil dilengkapi.');window.location='profil.php';</script>";
+                    //tampil alert dan akan redirect ke halaman hewan.php
+                    echo "<script>alert('Data berhasil ditambahkan.');window.location='hewan.php';</script>";
                   }
 
             } else {     
              //kalau file ekstensi tidak jpg dan png maka alert ini ditampilkan
-                echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='profil.php';</script>";
+                echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='hewan_tambah.php';</script>";
             }
 } else {
-   $query = "INSERT INTO costumer (costumer_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp',null)";
+   $query = "INSERT INTO  hewan (hewan_id,costumer_id, nama_hewan,jenis_hewan,umur,deskripsi,foto) VALUES ('', '$costumer_id', '$nama_hewan', '$jenis_hewan','$umur','$deskripsi',null)";
   $result = mysqli_query($conn, $query);
   // periska query apakah ada error
   if(!$result){
       die ("Query gagal dijalankan: ".mysqli_errno($conn).
             " - ".mysqli_error($conn));
   } else {
-    //untuk nampilin alert dan  redirect ke halaman profil.php
-    echo "<script>alert('Data berhasil ditambah.');window.location='profil.php';</script>";
+    //untuk nampilin alert dan  redirect ke halaman hewan.php
+    echo "<script>alert('Data berhasil ditambah.');window.location='hewan.php';</script>";
   }
 }
 

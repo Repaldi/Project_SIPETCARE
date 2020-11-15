@@ -5,7 +5,7 @@ include '../koneksi.php';
 
 // membuat variabel untuk menampung data dari form
   $user_id      = $_POST['user_id'];
-  $costumer_id      = $_POST['costumer_id'];
+  $admin_id      = $_POST['admin_id'];
   $nama_lengkap = $_POST['nama_lengkap'];
   $jenis_kelamin= $_POST['jenis_kelamin'];
   $alamat       = $_POST['alamat'];
@@ -13,7 +13,7 @@ include '../koneksi.php';
   $foto         = $_FILES['foto']['name'];
 
 
-//cek dulu jika ada gambar costumer jalankan coding ini
+//cek dulu jika ada gambar admin jalankan coding ini
 if($foto != "") {
   $ekstensi_diperbolehkan = array('png','jpg','jpeg'); //ekstensi file gambar yang bisa diupload 
   $x = explode('.', $foto); //memisahkan nama file dengan ekstensi yang diupload
@@ -23,9 +23,9 @@ if($foto != "") {
   $nama_gambar_baru = $angka_acak.'-'.$foto; //menggabungkan angka acak dengan nama file sebenarnya
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
                 move_uploaded_file($file_tmp, "../asset/admin/gambar/".$nama_gambar_baru); //untuk masukin file gambar ke folder asset/admin/gambar
-                   // jalankan query UPDATE berdasarkan ID yang costumer yang mau diedit
-                   $query  = "UPDATE costumer SET nama_lengkap = '$nama_lengkap', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat', nomor_hp = '$nomor_hp', foto = '$nama_gambar_baru'";
-                    $query .= "WHERE costumer_id = '$costumer_id'";
+                   // jalankan query UPDATE berdasarkan ID yang admin yang mau diedit
+                   $query  = "UPDATE admin SET nama_lengkap = '$nama_lengkap', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat', nomor_hp = '$nomor_hp', foto = '$nama_gambar_baru'";
+                    $query .= "WHERE admin_id = '$admin_id'";
                     $result = mysqli_query($conn, $query);
                   // periska query apakah ada error
                   if(!$result){
@@ -41,9 +41,9 @@ if($foto != "") {
                 echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='profil_edit.php';</script>";
             }
 } else {
-  // jalankan query UPDATE berdasarkan id yang costumer yang mau diedit
-  $query  = "UPDATE costumer SET nama_lengkap = '$nama_lengkap', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat', nomor_hp = '$nomor_hp'";
-  $query .= "WHERE costumer_id = '$costumer_id'";  
+  // jalankan query UPDATE berdasarkan id yang admin yang mau diedit
+  $query  = "UPDATE admin SET nama_lengkap = '$nama_lengkap', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat', nomor_hp = '$nomor_hp'";
+  $query .= "WHERE admin_id = '$admin_id'";  
   $result = mysqli_query($conn, $query);
                   // periska query apakah ada error
                   if(!$result){

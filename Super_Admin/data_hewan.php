@@ -24,22 +24,11 @@ if(!isset($_SESSION['username']))
  
     </span> </h5>
 </div>
+<div class="fixed-navbar">
+    <?php include "navbar.php";?>
+</div>
 <div class="fixed-sidebar">
-    <div class="side-group">
-        <img src="../asset/admin/gambar/maula.jpeg">
-    </div>
-    <div  class="titel-nama">
-        <center>
-            <h4 style="margin-top: -10px; color: white"> <?php echo "" .strtoupper($_SESSION['username']) ?></h4>
-        </center>
-    </div>
-    <div class="group-menu">
-        <a href="index.php"><i class="fa fa-home"></i> Home</a>
-        <a href="data_admin.php"><i class="fa fa-user"></i> Data Admin</a>
-        <a href="data_costumer.php"><i class="fa fa-users" aria-hidden="true"></i>  Data Costumer </a>
-        <a href="data_hewan.php"><i class="fa fa-bug"></i> Data Hewan</a>
-
-    </div>
+    <?php include "menu.php";?>
 </div>
 <div class="content">
         <h2 style="margin-left: 20px">Data Hewan Costumer </h2>
@@ -47,12 +36,12 @@ if(!isset($_SESSION['username']))
 
         <div class="main-content">
             
-            <?php $query=mysqli_query($conn, "SELECT * FROM user WHERE level='admin' GROUP BY Nama ASC");?>
+            <?php $query=mysqli_query($conn, "SELECT * FROM costumer INNER JOIN hewan ON hewan.costumer_id= costumer.costumer_id WHERE hewan.isdelete=false");?>
             <table cellpadding="0" cellspacing="0">
             <tr>
-                <th>No</th>
-                <th>Username</th>
-                <th>Password</th>
+                <th>Gambar</th>
+                <th>Nama Hewan</th>
+                <th>Nama Pemilik</th>
                 <th>Action</th>
             </tr>
             <?php if(mysqli_num_rows($query)>0){ ?>
@@ -61,15 +50,16 @@ if(!isset($_SESSION['username']))
                 while($data = mysqli_fetch_array($query)){
             ?>
             <tr>
-                <td><center><?php echo $no ?></center></td>
-                <td><?php echo $data["username"];?></td>
-                <td><?php echo $data["password"];?></td>
+                <td><img src="../asset/admin/gambar/<?php echo $data['foto']?>" width="50px" alt="Foto Hewan"></td>
+                <td><?php echo $data["nama_hewan"];?></td>
+                <td><?php echo $data["nama_lengkap"];?></td>
                 <td>
-                    <a href="#">Hapus</a> |
-                    <a href="#">Ubah</a>
+                    <a href="#">Lihat Detail</a> |  <a href="#">Hapus</a>
                 </td>
             </tr>
             <?php $no++; } ?>
+            <?php }else{ ?>
+                <td colspan="3"> Belum ada costumer </td>
             <?php } ?>
             </table>
                  

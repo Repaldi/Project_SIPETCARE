@@ -1,12 +1,8 @@
 <?php
 session_start();
-
+error_reporting(0);
+if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='superadmin')){
 include '../koneksi.php';
-// cek apakah yang mengakses halaman ini sudah login
-if(!isset($_SESSION['username']))
-	{
-    header("location:data_costumer.php?pesan=gagal");
-}
 ?>
 <!DOCTYPE Html>
 <html>
@@ -20,55 +16,47 @@ if(!isset($_SESSION['username']))
 <body>
 
 <div class="fixed-navbar">
-    <h5>Part &nbsp;<span style="color: #19B3D3">  Super Administrator
-    <a style=" margin-right: 15px; border-radius :2px; color:  white;  font-size: 17px; text-decoration: none; float: right;" href="../logout.php"><i class="fa fa-sign-out"></i> Logout</a>
-    </span> </h5>
+    <?php include "navbar.php";?>
 </div>
 <div class="fixed-sidebar">
-    <div class="side-group">
-        <img src="../asset/admin/gambar/maula.jpeg">
-    </div>
-    <div  class="titel-nama">
-        <center>
-            <h4 style="margin-top: -10px; color: white"> <?php echo "" .strtoupper($_SESSION['username']) ?></h4>
-        </center>
-    </div>
-    <div class="group-menu">
-        <a href="index.php"><i class="fa fa-home"></i> Home</a>
-        <a href="data_admin.php"><i class="fa fa-user"></i> Data Admin</a>
-        <a href="data_costumer.php"><i class="fa fa-users" aria-hidden="true"></i>  Data Costumer </a>
-        <a href="data_hewan.php"><i class="fa fa-bug"></i> Data Hewan</a>
-
-    </div>
+    <?php include "menu.php";?>
 </div>
 <div class="content">
-    <h3> Data Admin </h3>
+    <h3> Data Admin 
+    <a href='admin_tambah.php' style="float:right;"><i class="fa fa-plus"></i> Tambah Admin</a>
+    </h3>
+
 
     <div class="main-content">
             
-    <?php $query=mysqli_query($conn, "SELECT * FROM user WHERE level='admin' GROUP BY Nama ASC");?>
 	<table cellpadding="0" cellspacing="0">
     <tr>
         <th>No</th>
+        <th>Nama Lengkap</td>
         <th>Username</th>
-        <th>Password</th>
+        <th>Email</th>
         <th>Action</th>
     </tr>
-    <?php if(mysqli_num_rows($query)>0){ ?>
+    <?php 
+     $query = mysqli_query($conn, "SELECT * FROM user INNER JOIN admin ON user.user_id = admin.user_id ");
+    if(mysqli_num_rows($query)>0){ 
+        ?>
     <?php
         $no = 1;
         while($data = mysqli_fetch_array($query)){
     ?>
     <tr>
-        <td><center><?php echo $no ?></center></td>
+    <td><center><?php echo $no ?></center></td>
+        <td><?php echo $data["nama_lengkap"];?></td>
         <td><?php echo $data["username"];?></td>
-        <td><?php echo $data["password"];?></td>
+        <td><?php echo $data["email"];?></td>
         <td>
-            <a href="#">Hapus</a> |
-            <a href="#">Ubah</a>
+        <a href="#">Lihat Detail</a> |  <a href="#">Hapus</a>
         </td>
     </tr>
     <?php $no++; } ?>
+    <?php }else{?>
+    <td colspan="3"> Belum ada admin </td>
     <?php } ?>
     </table>
          
@@ -76,3 +64,8 @@ if(!isset($_SESSION['username']))
     </div>
 </body>
 </html>
+<?php
+}else{
+echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
+}
+?>

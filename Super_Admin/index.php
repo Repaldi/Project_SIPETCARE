@@ -1,12 +1,12 @@
 <?php
 session_start();
-
+error_reporting(0);
+if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='superadmin')){
 include '../koneksi.php';
-// cek apakah yang mengakses halaman ini sudah login
-if(!isset($_SESSION['username']))
-	{
-    header("location:index.php?pesan=gagal");
-}
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
 ?>
 <!DOCTYPE Html>
 <html>
@@ -18,28 +18,11 @@ if(!isset($_SESSION['username']))
 </head>
 
 <body>
-
 <div class="fixed-navbar">
-    <h5>Part &nbsp;<span style="color: #19B3D3">  Super Administrator
-    <a style=" margin-right: 15px; border-radius :2px; color:  white;  font-size: 17px; text-decoration: none; float: right;" href="../logout.php"><i class="fa fa-sign-out"></i> Logout</a>
-    </span> </h5>
+    <?php include "navbar.php";?>
 </div>
 <div class="fixed-sidebar">
-    <div class="side-group">
-        <img src="../asset/admin/gambar/maula.jpeg">
-    </div>
-    <div  class="titel-nama">
-        <center>
-            <h4 style="margin-top: -10px; color: white"> <?php echo strtoupper($_SESSION['username']) ?></h4>
-        </center>
-    </div>
-    <div class="group-menu">
-        <a href="index.php"><i class="fa fa-home"></i> Home</a>
-        <a href="data_admin.php"><i class="fa fa-user"></i> Data Admin</a>
-        <a href="data_costumer.php"><i class="fa fa-users" aria-hidden="true"></i>  Data Costumer </a>
-        <a href="data_hewan.php"><i class="fa fa-bug"></i> Data Hewan</a>
-
-    </div>
+    <?php include "menu.php";?>
 </div>
 <div class="content">
 <br/>
@@ -60,3 +43,8 @@ if(!isset($_SESSION['username']))
    
 </body>
 </html>
+<?php
+}else{
+echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
+}
+?>

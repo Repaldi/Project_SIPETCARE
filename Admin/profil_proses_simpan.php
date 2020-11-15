@@ -12,7 +12,7 @@ include '../koneksi.php';
   $foto         = $_FILES['foto']['name'];
 
 
-//cek dulu jika ada gambar costumer jalankan coding ini
+//cek dulu jika ada gambar admin jalankan coding ini
 if($foto != "") {
   $ekstensi_diperbolehkan = array('png','jpg','jpeg'); //ekstensi file gambar yang bisa diupload 
   $x = explode('.', $foto); //memisahkan nama file dengan ekstensi yang diupload
@@ -23,7 +23,7 @@ if($foto != "") {
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
                 move_uploaded_file($file_tmp, "../asset/admin/gambar/".$nama_gambar_baru); //memindah file gambar ke folder asset/admin/gambar
                   // jalankan query INSERT untuk menambah data ke database ini harus sesuai urutannya (id tidak perlu karena dibikin otomatis)
-                  $query = "INSERT INTO costumer (costumer_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp','$nama_gambar_baru')";
+                  $query = "INSERT INTO admin (admin_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp','$nama_gambar_baru')";
                   $result = mysqli_query($conn, $query);
                   // periska query apakah ada error
                   if(!$result){
@@ -39,7 +39,7 @@ if($foto != "") {
                 echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='profil.php';</script>";
             }
 } else {
-   $query = "INSERT INTO costumer (costumer_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp',null)";
+   $query = "INSERT INTO admin (admin_id,user_id, nama_lengkap,jenis_kelamin, alamat,nomor_hp,foto) VALUES ('', '$user_id', '$nama_lengkap', '$jenis_kelamin','$alamat','$nomor_hp',null)";
   $result = mysqli_query($conn, $query);
   // periska query apakah ada error
   if(!$result){

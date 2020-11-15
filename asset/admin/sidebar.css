@@ -103,12 +103,41 @@ body
     text-decoration: none;
 }
 
-
 .main-content
 {
     padding:10px;
     display: block;
 }
+
+/* Jasa Penitipan  */
+    
+div.gallery {
+    margin: 10px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  div.gallery:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  
+  }
+  div.desc > a {
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+  }
 
 /*css halaman login*/
 h1{
@@ -224,7 +253,7 @@ table tr:hover td {
     background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 
-/* CSS BAGIAN PROFIL COSTUMER */
+/* CSS BAGIAN PROFIL COSTUMER  dan Admin*/
 
 
 
@@ -247,7 +276,14 @@ input[type=text] {
     margin-bottom: 10px;
     display: block;
   }
-  
+
+  textarea{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   .icon-container {
     margin-bottom: 20px;
     padding: 7px 0;
@@ -270,13 +306,12 @@ input[type=text] {
     color : white; 
   }
 
-/* Foto Costumer */
+/* Foto Costumer dan Admin */
 .card {
     
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 50%;
-   
     border-radius: 5px;
     margin: 0 auto;
   }
@@ -290,7 +325,4 @@ input[type=text] {
   }
 
 
-
-
-  
-  
+ 

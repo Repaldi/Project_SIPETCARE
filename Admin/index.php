@@ -1,41 +1,48 @@
-<!DOCTYPE Html>
+<?php 
+session_start();
+error_reporting(0);
+if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='admin')){
+include '../koneksi.php';
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+$level = $_SESSION['level'];
+?>
+
 <html>
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../aset/admin/sidebar.css">
+    <link rel="stylesheet" href="../asset/admin/sidebar.css" type="text/css">
 </head>
 
 <body>
-<div class="fixed-navbar">
-    <h5>Part &nbsp;<span style="color: #19B3D3">Administrator
-    <a   style=" margin-right: 15px; border-radius :2px; color:  white;  font-size: 17px; text-decoration: none; float: right;" href="../logout.php"><i class="fa fa-sign-out"></i> Logout</a>
-    </span> </h5>
-</div>
-<div class="fixed-sidebar">
-    <div class="side-group">
-        <img src="../aset/admin/gambar/maula.jpeg">
-    </div>
-    <div  class="titel-nama">
-        <center>
-        <h4 style="margin-top: -10px; color: white"> Maula Al Falaqi</h4>
-        </center>
-    </div>
-    <div class="group-menu">
-        <a href="index.html"><i class="fa fa-home"></i> Home</a>
-        <a href="#"><i class="fa fa-file-o"></i> null</a>
-        <a href="#"><i class="fa fa-file-o"></i> null </a>
-        <a href="tabel_data_hewan.php"><i class="fa fa-file-o"></i> Data Hewan Costumer</a>
-    </div>
-</div>
-<div class="content">
-    <h2>Dahsboard</h2>
-    <div class="breadcrumb">
 
-        <div class="main-content">
-            <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
-        </div>
-    </div>
+<!-- Navbar -->
+<div class="fixed-navbar">
+    <?php include 'navbar.php';?>
+</div>
+
+<!-- Menu -->
+<div class="fixed-sidebar">
+    <?php include 'menu.php';?>
+</div>
+
+<!-- Konten -->
+<div class="content">
+    <div class="main-content">
+        <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?> 
+        <p>SIPETCARE adalah aplikasi yang siap membantu anda</p>
+      
+
+    </div>        
+</div>
+   
 </body>
 </html>
+
+<?php 
+}else{
+echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
+}
+?>

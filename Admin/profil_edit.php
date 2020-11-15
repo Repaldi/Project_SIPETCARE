@@ -1,7 +1,7 @@
 <?php 
 session_start();
 error_reporting(0);
-if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='costumer')){
+if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSION['level']=='admin')){
 include '../koneksi.php';
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
     // ambil nilai id dari url dan disimpan dalam variabel $id
     $id = ($_GET["id"]);
     // menampilkan data dari database yang mempunyai id=$user_id
-    $query = "SELECT * FROM costumer WHERE costumer_id='$id'";
+    $query = "SELECT * FROM admin WHERE admin_id='$id'";
     $result = mysqli_query($conn, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
         <h2>Profil Saya</h2>
         <form method="post" action="profil_proses_edit.php" enctype="multipart/form-data">
                 <input type="hidden" name="user_id" value="<?php echo $data['user_id'];?>" >
-                <input type="hidden" name="costumer_id" value="<?php echo $data['costumer_id']; ?>" >
+                <input type="hidden" name="admin_id" value="<?php echo $data['admin_id']; ?>" >
 
                 <label for="username"><i class="fa fa-user"></i> Username</label>
                 <input type="text"  name="username" value="<?php echo $username;?>" ReadOnly>
@@ -90,7 +90,7 @@ if (isset($_GET['id'])) {
                 <img src="../asset/admin/gambar/<?php echo $data['foto'];?>" alt="Foto Profil" width="100%" >
                 <input type="file" name="foto" value="<?php echo $data['foto'];?>">
             </div>
-            <button type="submit" class="btn" value="Simpan"><i class="fa fa-floppy-o" aria-hidden="true"> SIMPAN </i>
+            <button type="submit" style="float:right" class="btn" value="Simpan"><i class="fa fa-floppy-o" aria-hidden="true"> SIMPAN </i>
         </div>
     </form>
     </div>
