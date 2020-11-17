@@ -45,7 +45,8 @@ include '../koneksi.php';
         </a>
       <?php }?>
   
-<div class="desc"> <a href="detail_toko.php"> <?php echo $data['nama_toko']; ?>  </a></div>
+<div class="desc"> <a href="detail_toko.php?id=<?php echo $data['toko_id'];?>"> <?php echo $data['nama_toko']; ?>  </a></div>
+
 </div>
 
       
@@ -70,6 +71,7 @@ include '../koneksi.php';
 
 </div>
 </div>
+
 </body>
 </html>
 
@@ -78,3 +80,6 @@ include '../koneksi.php';
 echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
 }
 ?>
+
+    
+ 

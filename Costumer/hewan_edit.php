@@ -54,8 +54,8 @@ if (isset($_GET['id'])) {
         <div class="column">
         <h2>Edit Data Hewan</h2>
         <form method="post" action="hewan_edit_simpan.php" enctype="multipart/form-data">
-                <input type="hidden" name="costumer_id" value="<?php echo $$data['costumer_id']; ?>" >
-                <input type="hidden" name="isdelete" value=<?php echo $$data['isdelete']; ?>>
+                <input type="hidden" name="costumer_id" value="<?php echo $data['costumer_id']; ?>" >
+                <input type="hidden" name="isdelete" value=<?php echo $data['isdelete']; ?>>
                 <input type="hidden" name="hewan_id" value=<?php echo $data['hewan_id']; ?>>
 
 

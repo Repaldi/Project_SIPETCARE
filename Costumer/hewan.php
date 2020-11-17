@@ -54,7 +54,7 @@ $user_id = $_SESSION['user_id'];
     <tr>
     
         <td><center><?php echo $no ?></center></td>
-        <td><img src="../asset/admin/gambar/<?php echo $dataDua['foto']?>" width="50px" alt="Foto Hewan"></td>
+        <td><?php echo "<img src='../asset/admin/gambar/$dataDua[foto]' width='50px' alt='hewan saya'/>";?></td>
         <td><?php echo $dataDua['nama_hewan'];?></td>
         <td><?php echo $dataDua['umur'];?> Bulan</td>
         <td>
