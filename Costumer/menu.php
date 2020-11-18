@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 $query= mysqli_query($conn, "SELECT * FROM costumer WHERE user_id =".$_SESSION['user_id']);
 $data = mysqli_fetch_array($query);
 if(empty($data['user_id'])) {
@@ -23,5 +22,6 @@ if(empty($data['user_id'])) {
         <a href='profil.php'><i class="fa fa-user"></i> Profil</a>
         <a href='hewan.php'><i class="fa fa-bug"></i> Data Hewan</a>
         <a href='jasa_penitipan.php'><i class="fa fa-users" aria-hidden="true"></i> Jasa Penitipan </a>
+        <a href='bantuan.php'><i class="fa fa-fax" aria-hidden="true"></i> Bantuan </a>
     </div>
 </body>
