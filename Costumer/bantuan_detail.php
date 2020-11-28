@@ -132,17 +132,17 @@ $level = $_SESSION['level'];
 
 
 <div class="main-content">
-    <div class="dasar" id="judul">
+    <div  style="background-color: #19B3D3" class="dasar" id="judul">
             <h4> * Chat Room * </h4> </div>
 
-        <div class="chathistory">    
+        <div style="background-color: #f8f1f1" class="chathistory">
             <?php  
                 // menampilkan data dari database yang mempunyai id=$user_id
                 $query =mysqli_query($conn, "SELECT * FROM chat WHERE toko_id=$id AND costumer_id=$costumer_id");
 
                 while ($baris_data = mysqli_fetch_assoc($query)) {?>
                 
-                <div <?php if ($baris_data["costumer_id"] == $costumer_id) { ?> class="kotak_send" <?php 
+                <div style="background-color: #00E676" <?php if ($baris_data["costumer_id"] == $costumer_id) { ?> class="kotak_send" <?php
                         } else {?> class="kotak" <?php } ?> >
 
                     <div id="pengirim"> 
@@ -159,16 +159,18 @@ $level = $_SESSION['level'];
             <?php echo "<br />";} ?>
         </div>     
 
-        <form id="inputchatbox" action="" method="POST">
-            <textarea name="isi_pesan" id="pesan" placeholder="Tulis Pesan ..." required></textarea> 
+        <form style="background-color: #424242" id="inputchatbox" action="" method="POST">
+            <textarea name="isi_pesan" id="pesan" placeholder="Tulis Pesan ..." required></textarea>
             <input type="hidden" name="status_pesan" value="0"/>
 
-            <input id="submit" type="submit" name="submit" value="Kirim"/> 
+            <input  id="submit" type="submit" name="submit"  value="Kirim"/>
+
         </form>
 
 
 
 </div>
+    <img style="width: 100%; background-color:#22242a;z-index:1;box-shadow:0px 10px 10px rgba(0,0,0,0.5);" src="../asset/admin/gambar/kontak.jpg">
 </div>
 
 

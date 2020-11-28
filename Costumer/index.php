@@ -34,11 +34,55 @@ $level = $_SESSION['level'];
     <div class="main-content">
         <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?> 
         <p>SIPETCARE adalah aplikasi yang siap membantu anda</p>
-      
 
-    </div>        
+    </div>
+    <div class="slideshow-container" style="width: 90%; box-sizing: border-box;">
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 5</div>
+        <img src="../asset/admin/gambar/slider2.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 5</div>
+        <img src="../asset/admin/gambar/slider1%20(1).png" style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 5</div>
+        <img src="../asset/admin/gambar/slider3.png" style="width:100%">
+    </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 5</div>
+            <img src="../asset/admin/gambar/slder5%20(2).png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 5</div>
+            <img src="../asset/admin/gambar/slder5%20(1).png" style="width:100%">
+        </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
 </div>
-   
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+</div>
+    <br>
+    <br>
+    <div  style="background-color: #222831; height: 7%; color: white; border-radius: 5px; font-size: 15px;" class="footer"><p style="margin-left:300px; margin-bottom: -30px;">Copyright © 2020 Sipetcare. All Rights Reserved
+        </p></div>
+
+</div>
+
 </body>
 </html>
 
@@ -47,3 +91,32 @@ $level = $_SESSION['level'];
 echo "<center>Anda Telah Berhasil Keluar Silahkan Klik </br><a href='../login.php'>Kembali</a> Untuk Login</center>";
 }
 ?>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>

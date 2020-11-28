@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
         <h2><span style="color:white;">Manipulasi text</span></h2>
 
             <label for="password"><i class="fa fa-user"></i> Password</label>
-            <input type="text" name="password" value="<?php echo $password;?>" ReadOnly >
+            <input type="text" name="password" value="<?php echo $password;?>"readonly >
             
             <label for="nomor_hp"><i class="fa fa-telegram"></i> Nomor HP</label>
             <input type="text"  name="nomor_hp"  value="<?php echo $data['nomor_hp'];?>" >
