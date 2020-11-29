@@ -114,15 +114,15 @@ include '../koneksi.php';
     </style>
 </head>
 <body>
-<p><a href="#login?=id<?=$data['costumer_id']?>">Edit</a></p>
+<p><a  href="#id">Edit</a></p>
 
-<div id="login" class="modalDialog">
+
+<div id="id" class="modalDialog">
     <div>
         <a href="#" title="Close" class="close">X</a>
         <h3>Data Costumer</h3>
         <form  action="action_page.php">
             <label><b>Nama Lengkap</b></label>
-            <input type="text" name="id"value=" <?php echo $data["costumer_id"];?>">
             <input type="text" name="uname"  value=" <?php echo $data["nama_lengkap"];?>" required>
             <label><b>Username</b></label>
             <input type="text" placeholder="username" name="psw"  value=" <?php echo $data["username"];?>" required>
