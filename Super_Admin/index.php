@@ -35,7 +35,7 @@ $password = $_SESSION['password'];
         <?php echo "Anda login sebagai " .strtoupper($_SESSION['level']) ?>
     </div>
 
-    <div class="slideshow-container" style="width: 90%; box-sizing: border-box;">
+   <!-- <div class="slideshow-container" style="width: 90%; box-sizing: border-box;">
         <div class="mySlides fade">
             <div class="numbertext">1 / 2</div>
             <img src="../asset/admin/gambar/superadmin1.png" style="width:100%">
@@ -56,7 +56,7 @@ $password = $_SESSION['password'];
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
         </div>
-</div>
+</div>-->
    
 </body>
 </html>

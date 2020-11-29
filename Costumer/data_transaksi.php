@@ -38,7 +38,6 @@ $user_id = $_SESSION['user_id'];
     
     <tr>
         <th>Tanggal Penitipan</th>
-        <th>Gambar</th>
         <th>Nama</th>
         <th>Biaya</th>
         <th>Status</th>
@@ -54,16 +53,17 @@ $user_id = $_SESSION['user_id'];
     <tr>
     
         <td><?php echo $dataDua['tgl_transaksi'];?></td>
-        <td><?php echo "<img src='../asset/admin/gambar/$dataDua[foto]' width='50px' alt='hewan titipan'/>";?></td>
         <td><?php echo $dataDua['nama_hewan'];?></td>
         <td>Rp. <?php echo $dataDua['sub_total'];?> </td>
-        <td>  </td>
-        <td>
-           
-            <a href="hewan_hapus.php?id=<?php echo $dataDua['hewan_id']; ?>" onclick="return confirm('Yakin Hapus?')">Hapus</a>
-            <a href="hewan_edit.php?id=<?php echo $dataDua['hewan_id']; ?>">Edit</a>
-
+        <td><?php if($dataDua['status'] == '0'){?>
+        <?php  echo 'Belum Bayar' ?> 
+        <td>  <a href="bayar.php?id=<?php echo $dataDua['transaksi_id']; ?>">Bayar</a> </td>
+        <?php } else { ?>
+        <?php echo 'Lunas' ?>
+        <td>  
+            Terimakasih
         </td>
+        <?php }?>  </td>
     </tr>
     <?php  } ?>
     <?php }else{?>

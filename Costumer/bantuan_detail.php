@@ -170,7 +170,7 @@ $level = $_SESSION['level'];
 
 
 </div>
-    <img style="width: 100%; background-color:#22242a;z-index:1;box-shadow:0px 10px 10px rgba(0,0,0,0.5);" src="../asset/admin/gambar/kontak.jpg">
+    <img style="width: 100%;  background-color:#22242a;z-index:1;box-shadow:0px 10px 10px rgba(0,0,0,0.5);" src="../asset/admin/gambar/kontak.jpg">
 </div>
 
 

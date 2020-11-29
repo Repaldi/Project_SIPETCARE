@@ -54,7 +54,7 @@ if(!isset($_SESSION['username']))
                 <td><?php echo $data["nama_hewan"];?></td>
                 <td><?php echo $data["nama_lengkap"];?></td>
                 <td>
-                    <a href="#">Lihat Detail</a> |  <a href="#">Hapus</a>
+                    <a href="#">Lihat Detail</a> |  <a href="data_hewan_hapus.php?id=<?=$data  ['hewan_id']?>">Hapus</a>
                 </td>
             </tr>
             <?php $no++; } ?>

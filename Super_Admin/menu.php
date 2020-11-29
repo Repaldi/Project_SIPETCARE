@@ -14,4 +14,5 @@
         <a href='data_admin.php'><i class="fa fa-user"></i> Data Admin</a>
         <a href='data_costumer.php'><i class="fa fa-users" aria-hidden="true"></i> Data Costumer</a>
         <a href='data_hewan.php'><i class="fa fa-bug"></i> Data Hewan</a>
+        <a href='pengaturan.php'><i class="fa fa-cog" aria-hidden="true"></i> Pengaturan </a>
     </div>

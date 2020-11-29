@@ -44,10 +44,11 @@ if (isset($_POST['submit'])) :
     $biaya_perhari = $_POST['biaya'];  
     $sub_total = $_POST['sub_total'];  
     $metode_pembayaran = $_POST['metode_pembayaran']; 
+    $status = $_POST['status'];  
     $isdelete = $_POST['isdelete'];  
  
 
-mysqli_query($conn, "insert into transaksi values ('','$hewan_id','$costumer_id','$toko_id','$fasilitas_id',NOW(),'$alamat','$keterangan','$biaya_perhari','$sub_total','$metode_pembayaran',NULL,NULL,'$isdelete')"); 
+mysqli_query($conn, "insert into transaksi values ('','$hewan_id','$costumer_id','$toko_id','$fasilitas_id',NOW(),'$alamat','$keterangan','$biaya_perhari','$sub_total','$metode_pembayaran',NULL,NULL,NULL,'$status','$isdelete')"); 
 echo "<script>alert('Data Penitipan Ditambahkan.');window.location='titipkan_hewan.php';</script>";
 endif; ?>
 
@@ -65,6 +66,7 @@ $costumer_id=$data['costumer_id'];
         <form method="post" action="" >
                 <input type="hidden" name="costumer_id" value="<?php echo $costumer_id; ?>" >
                 <input type="hidden" name="isdelete" value=0>
+                <input type="hidden" name="status" value=0>
 
                 <label for="nama_hewan"><i class="fa fa-bug"></i> Pilih Hewan Peliharaan</label>
                 <select class="hewan" name="hewan_id">

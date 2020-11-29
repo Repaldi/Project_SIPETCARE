@@ -34,7 +34,7 @@ $level = $_SESSION['level'];
         <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?> 
         <p>SIPETCARE adalah aplikasi yang siap membantu anda</p>
       
-
+<!--
     </div>
     <div class="slideshow-container" style="width: 90%; box-sizing: border-box;">
         <div class="mySlides fade">
@@ -58,7 +58,7 @@ $level = $_SESSION['level'];
         <span class="dot" onclick="currentSlide(2)"></span>
     </div>
 </div>
-   
+   -->
 </body>
 </html>
 
