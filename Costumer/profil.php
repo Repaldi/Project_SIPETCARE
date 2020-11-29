@@ -98,10 +98,12 @@ if(empty($data['user_id'])) {
 
                 <label for="alamat"><i class="fa fa-address-card-o"></i> Alamat</label>
                 <textarea name="alamat"  rows="4" cols="48" ReadOnly> <?php echo $data['alamat']?></textarea>
-            
+
+
+
         </div>
-           
-          
+
+
         <div class="column">
         <h2><span style="color:white;">Manipulasi text</span></h2>
 
@@ -116,14 +118,19 @@ if(empty($data['user_id'])) {
             </div>
             
                 <a class="btn" href="profil_edit.php?id=<?php echo $data['costumer_id']; ?>">Edit Profil</a>
+
+
         
         </div>
+
+
 
     </div>
 
   <?php };?>
     
 </div>
+
 </div>
 
 </body>

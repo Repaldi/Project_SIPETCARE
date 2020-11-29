@@ -71,6 +71,11 @@ $user_id = $_SESSION['user_id'];
     </table>
          
         </div>
+
+    <!--jumbotron-->
+    <div class="jumbotron">
+        <?php include 'jumbotron.php';?>
+    </div>
     </div>
 
 </body>
