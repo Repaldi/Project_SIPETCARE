@@ -30,9 +30,9 @@ $level = $_SESSION['level'];
 </div>
 
 <!-- Konten -->
-<div class="content">
+<div class="content" style="margin-left: 10%">
     <div class="main-content">
-        <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?> 
+        <h2> <?php echo "Selamat Datang " .strtoupper($username); ?></h2><br/>  <?php echo "Anda login sebagai " .strtoupper($level); ?>
         <p>SIPETCARE adalah aplikasi yang siap membantu anda</p>
 
     </div>

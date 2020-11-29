@@ -29,24 +29,22 @@ body
 
 .fixed-sidebar
 {
-    display: block;
-    top:11%;
-    left:0;
-    width:21.5%;
+    position: fixed;
+    top:11.4%;
+    left:0%;
+    width:25%;
     background:#123a44;
     height:89%;
-    box-shadow:10px 10px 10px rgba(0,0,0,0.1);
+    box-shadow:10px 10px 10px rgba(0,0,0,0.5);
 }
 
 
 .side-group
 {
     display: flex;
-    position: absolute;
     flex-flow: row;
     justify-content: center;
     padding:30px;
-    cursor: pointer;
 }
 
 .side-group > img
@@ -69,7 +67,6 @@ body
     color:white;
     border-radius:5px;
     transition: 0.5s;
-    transition-property:b ;
 }
 
 .group-menu >a:hover
@@ -79,10 +76,10 @@ body
 
 .content
 {
-    padding: 15px;
-    padding-left:26%;
-   margin-top: 60px;
-
+    position: relative;
+    padding:15px;
+    padding-left:27%;
+    padding-top:5%;
 
 }
 .main-content {
@@ -386,6 +383,7 @@ input[type=text] {
     padding: 20px;
     height:300px;
     overflow-x: hidden;
+    box-shadow:10px 10px 10px rgba(0,0,0,0.5);
     overflow-y: scroll;
     
 }
@@ -393,13 +391,12 @@ input[type=text] {
     border-radius: 5px;
     background-color: #131313;
     padding: 20px;
-    
 }
+
 
 /*membuat slider*/
 /* Slideshow container */
 .slideshow-container {
-    max-width: 1000px;
     position: relative;
     margin: auto;
 }
