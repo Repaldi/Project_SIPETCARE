@@ -29,7 +29,7 @@ body
 
 .fixed-sidebar
 {
-    display: block;
+    position:fixed;
     top:11%;
     left:0;
     width:21.5%;
@@ -42,7 +42,7 @@ body
 .side-group
 {
     display: flex;
-    position: absolute;
+    /* position: absolute; */
     flex-flow: row;
     justify-content: center;
     padding:30px;
@@ -80,8 +80,9 @@ body
 .content
 {
     padding: 15px;
+    position: relative;
     padding-left:26%;
-   margin-top: 60px;
+    margin-top: 60px;
 
 
 }
@@ -109,8 +110,6 @@ body
     color:rgb(0,150,255);
     text-decoration: none;
 }
-
-
 
 /* Jasa Penitipan  */
     

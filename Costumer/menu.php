@@ -22,6 +22,7 @@ if(empty($data['user_id'])) {
         <a href='profil.php'><i class="fa fa-user"></i> Profil</a>
         <a href='hewan.php'><i class="fa fa-bug"></i> Data Hewan</a>
         <a href='jasa_penitipan.php'><i class="fa fa-users" aria-hidden="true"></i> Jasa Penitipan </a>
+        <a href='data_transaksi.php'><i class="fa fa-users" aria-hidden="true"></i> Transaksi </a>
         <a href='bantuan.php'><i class="fa fa-fax" aria-hidden="true"></i> Bantuan </a>
         <a href='pengaturan.php'><i class="fa fa-cog" aria-hidden="true"></i> Pengaturan </a>
     </div>
