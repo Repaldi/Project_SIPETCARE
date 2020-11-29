@@ -22,9 +22,8 @@ $user_id = $_SESSION['user_id'];
     <?php include 'menu.php';?>
 </div>
 
-<div class="content" style="margin-left:10%">
-    <h3> Data  Hewan Saya
-   <a href='hewan_tambah.php' style="float:right;"><i class="fa fa-plus"></i> Tambah Hewan</a>
+<div class="content">
+    <h3> Data  Transaksi
    </h3>
 
     <div class="main-content">
@@ -38,44 +37,42 @@ $user_id = $_SESSION['user_id'];
 	<table cellpadding="0" cellspacing="0">
     
     <tr>
-        <th>No</th>
-        <th>Gambar</th>
+        <th>Tanggal Penitipan</th>
         <th>Nama</th>
-        <th>Umur</th>
+        <th>Biaya</th>
+        <th>Status</th>
         <th>Action</th>
     </tr>
     <?php 
-      $queryKedua = mysqli_query($conn, "SELECT * FROM hewan WHERE costumer_id='$costumer_id' AND isdelete=0");
+      $queryKedua = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN hewan ON transaksi.hewan_id=hewan.hewan_id  WHERE transaksi.costumer_id='$costumer_id' AND transaksi.isdelete='false' ");
     if(mysqli_num_rows($queryKedua)>0){ ?>
     <?php
-        $no = 1;
+  
         while($dataDua = mysqli_fetch_array($queryKedua)){
     ?>
     <tr>
     
-        <td><center><?php echo $no ?></center></td>
-        <td><?php echo "<img src='../asset/admin/gambar/$dataDua[foto]' width='50px' alt='hewan saya'/>";?></td>
+        <td><?php echo $dataDua['tgl_transaksi'];?></td>
         <td><?php echo $dataDua['nama_hewan'];?></td>
-        <td><?php echo $dataDua['umur'];?> Bulan</td>
-        <td>
-           
-            <a href="hewan_hapus.php?id=<?php echo $dataDua['hewan_id']; ?>" onclick="return confirm('Yakin Hapus?')">Hapus</a>
-            <a href="hewan_edit.php?id=<?php echo $dataDua['hewan_id']; ?>">Edit</a>
-
+        <td>Rp. <?php echo $dataDua['sub_total'];?> </td>
+        <td><?php if($dataDua['status'] == '0'){?>
+        <?php  echo 'Belum Bayar' ?> 
+        <td>  <a href="bayar.php?id=<?php echo $dataDua['transaksi_id']; ?>">Bayar</a> </td>
+        <?php } else { ?>
+        <?php echo 'Lunas' ?>
+        <td>  
+            Terimakasih
         </td>
+        <?php }?>  </td>
     </tr>
-        <?php $no++; } ?>
-            <?php }else{?>
-            <tr>
+    <?php  } ?>
+    <?php }else{?>
         <td colspan="4"><center>Tidak ada data hewan</center></td>
-        </tr>
-        <?php } ?>
+   <?php } ?>
     </table>
          
-        </div>
-
-
-    </div>
+</div>
+</div>
 
 </body>
 </html>

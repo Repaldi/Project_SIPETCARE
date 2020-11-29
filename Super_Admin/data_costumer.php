@@ -114,7 +114,8 @@ include '../koneksi.php';
     </style>
 </head>
 <body>
-<p><a  href="#id">Edit</a></p>
+
+<p><a href="#login?=<?=$data['costumer_id']?>">Edit</a></p>
 
 
 <div id="id" class="modalDialog">

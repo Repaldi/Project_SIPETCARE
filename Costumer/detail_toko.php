@@ -24,7 +24,7 @@ include '../koneksi.php';
     <?php include 'menu.php';?>
 </div>
 
-<div class="content">
+<div class="content" >
 
         
 <?php 
@@ -53,8 +53,10 @@ if (isset($_GET['id'])) {
 ?>
 
 <div class="main-content">
+<div class="row">
+        <div class="column">
 
-<h2><?php echo $data['nama_toko'];?> <a href='titipkan_hewan.php' style="float:right;"><i class="fa fa-plus"></i> Titipkan Hewan</a> </h2>
+<h2><?php echo $data['nama_toko'];?> </h2>
 <p>yuk titipkan hewan peliharaan sekarang juga!</p>
 
 <?php if(empty($data['foto_toko'])){ ?>
@@ -74,6 +76,39 @@ if (isset($_GET['id'])) {
 <p><?php echo $data['alamat_toko'];?> </p>
 <p><b>Kontak :</b></p>
 <p>- </p>
+</div>
+        <div class="column">
+        <h2>Fasilitas</h2>
+        <table cellpadding="0" cellspacing="0">
+        <tr>
+        <th>Nama Fasilitas</th>
+        <th>Keterangan</th>
+        <th>biaya / hari</th>
+        </tr>
+        <?php 
+        $query = mysqli_query($conn, "SELECT * FROM fasilitas WHERE toko_id='$id'");
+        if(mysqli_num_rows($query)>0){ ?>
+        <?php
+        while($datafasilitas= mysqli_fetch_array($query)){
+        ?>
+        <tr>
+        <td>
+        <?php echo $datafasilitas['nama_fasilitas'];?>
+        </td>
+        <td><?php echo $datafasilitas['keterangan'];?></td>
+        <td><?php echo $datafasilitas['biaya'];?></td>
+        </tr>
+        <?php } ?>
+        <?php }else{ ?>
+        <tr>
+          <td colspan="3">  
+        Tidak ada Fasilitas yang tersedia
+        </td>
+        </tr>
+        <?php } ?>
+        </div>
+      </div>
+
 
 </div>
 </div>
