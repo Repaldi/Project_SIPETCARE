@@ -67,8 +67,9 @@ if (isset($_POST['submit'])) :
     $queryUpdate  = "UPDATE transaksi SET bayar = '$bayar', kembalian = '$kembalian', status = '$status'";
     $queryUpdate .= "WHERE transaksi_id = '$id'";
     $simpan = mysqli_query($conn, $queryUpdate);
-echo "<script>alert('Pembayaran Berhasil.');window.location='hewan.php';</script>";
+    echo "<script>alert('Pembayaran Berhasil.');window.location='hewan.php';</script>";
 endif; ?>
+
 <div class="content">
 <div class="main-content">
 <div class="row">

@@ -61,8 +61,10 @@ $toko_id = $data['toko_id'];
 ?>
     <div class="main-content">
 
-        <h2>Fasilitas Toko <a href='tambah_fasilitas.php' style="float:right;"><i class="fa fa-plus"></i> Fasilitas</a> </h2>
-            
+        <h2>Fasilitas Toko 
+        <?php if($toko_id >0 ) { ?>
+        <a href='tambah_fasilitas.php' style="float:right;"><i class="fa fa-plus"></i> Fasilitas</a> </h2>
+        <?php }else{} ?> 
    <table cellpadding="0" cellspacing="0">
    
    <tr>

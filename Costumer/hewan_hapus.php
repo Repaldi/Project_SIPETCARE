@@ -15,7 +15,7 @@ die ("Query gagal dijalankan: ".mysqli_errno($conn).
 " - ".mysqli_error($conn));
 } else {
 //untuk nampilin alert dan  redirect ke halaman hewan.php
-echo "<script>alert('Data berhasil dihapus.');window.location='data_hewan.php';</script>";
+echo "<script>alert('Data berhasil dihapus.');window.location='hewan.php';</script>";
 }
 
 ?>

@@ -65,13 +65,24 @@ $user_id = $_SESSION['user_id'];
         <td><?php echo "<img src='../asset/admin/gambar/$dataDua[foto]' width='50px' alt='hewan titipan'/>";?></td>
         <td><?php echo $dataDua['nama_hewan'];?></td>
         <td>Rp. <?php echo $dataDua['sub_total'];?> </td>
-        <td><?php if($dataDua['status'] == '0'){?>
+
+        <td><?php if($dataDua['status'] == '0' AND $dataDua['metode_pembayaran']=='langsung'){?>
         <?php  echo 'Belum Bayar' ?> 
         <td>  <a href="bayar.php?id=<?php echo $dataDua['transaksi_id']; ?>">Bayar</a> </td>
-        <?php } else { ?>
+        <?php } elseif($dataDua['status'] == '0' AND $dataDua['metode_pembayaran']=='Transfer') { ?>
+        <?php echo 'Belum Bayar' ?>
+        <td>  
+           Menunggu Transfer
+        </td>
+        <?php } elseif($dataDua['status'] == '1') { ?>
         <?php echo 'Lunas' ?>
         <td>  
             -
+        </td>
+        <?php } else { ?>
+        <?php echo 'Menunggu' ?> <button onClick="JavaScript:window.location.href='../asset/admin/bukti/<?php echo $dataDua['bukti_pembayaran'];?>';">Cek Bukti</a>
+        <td>  
+        <a href="konfirmasi_pembayaran.php?id=<?php echo $dataDua['transaksi_id']; ?>">Konfirmasi</a>
         </td>
         <?php }?>  </td>
     </tr>

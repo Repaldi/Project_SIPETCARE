@@ -44,7 +44,7 @@ $user_id = $_SESSION['user_id'];
         <th>Action</th>
     </tr>
     <?php 
-      $queryKedua = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN hewan ON transaksi.hewan_id=hewan.hewan_id  WHERE transaksi.costumer_id='$costumer_id' AND transaksi.isdelete='false' ");
+      $queryKedua = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN hewan ON transaksi.hewan_id=hewan.hewan_id  WHERE transaksi.costumer_id='$costumer_id' AND transaksi.isdelete='false'  ");
     if(mysqli_num_rows($queryKedua)>0){ ?>
     <?php
   
@@ -55,20 +55,30 @@ $user_id = $_SESSION['user_id'];
         <td><?php echo $dataDua['tgl_transaksi'];?></td>
         <td><?php echo $dataDua['nama_hewan'];?></td>
         <td>Rp. <?php echo $dataDua['sub_total'];?> </td>
-        <td><?php if($dataDua['status'] == '0'){?>
+
+        <td><?php if($dataDua['status'] == '0' AND $dataDua['metode_pembayaran']=='Transfer'){?>
         <?php  echo 'Belum Bayar' ?> 
         <td>  <a href="bayar.php?id=<?php echo $dataDua['transaksi_id']; ?>">Bayar</a> </td>
-        <?php } else { ?>
+
+        <?php } elseif($dataDua['status'] == '0' AND $dataDua['metode_pembayaran']=="langsung"){ ?>
+        <?php echo 'Belum Bayar' ?>
+        <td> Silahkan bayar ke toko </td>
+
+        <?php } elseif($dataDua['status'] == '1'){ ?>
         <?php echo 'Lunas' ?>
-        <td>  
-            Terimakasih
+        <td> Terimakasih </td>
+
+        <?php } else { ?>
+        <?php echo 'Diproses' ?>
+        <td> Tunggu ya </td>
+        <?php }?>  
         </td>
-        <?php }?>  </td>
     </tr>
-    <?php  } ?>
-    <?php }else{?>
+        <?php  } ?>
+        <?php } else{ ?>
         <td colspan="4"><center>Tidak ada data hewan</center></td>
-   <?php } ?>
+        <?php } ?>  
+        
     </table>
          
 </div>
