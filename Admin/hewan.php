@@ -77,7 +77,7 @@ $user_id = $_SESSION['user_id'];
         <?php } elseif($dataDua['status'] == '1') { ?>
         <?php echo 'Lunas' ?>
         <td>  
-            -
+        <a href="cetak_struk.php?id=<?php echo $dataDua['transaksi_id']; ?>" target="_blank">CETAK</a>
         </td>
         <?php } else { ?>
         <?php echo 'Menunggu' ?> <button onClick="JavaScript:window.location.href='../asset/admin/bukti/<?php echo $dataDua['bukti_pembayaran'];?>';">Cek Bukti</a>

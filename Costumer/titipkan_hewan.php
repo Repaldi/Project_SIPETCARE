@@ -42,13 +42,14 @@ if (isset($_POST['submit'])) :
     $alamat = $_POST['alamat'];    
     $keterangan = $_POST['keterangan'];          
     $biaya_perhari = $_POST['biaya'];  
+    $lama_penitipan = $_POST['lama_penitipan'];  
     $sub_total = $_POST['sub_total'];  
     $metode_pembayaran = $_POST['metode_pembayaran']; 
     $status = $_POST['status'];  
     $isdelete = $_POST['isdelete'];  
  
 
-mysqli_query($conn, "insert into transaksi values ('','$hewan_id','$costumer_id','$toko_id','$fasilitas_id',NOW(),'$alamat','$keterangan','$biaya_perhari','$sub_total','$metode_pembayaran',NULL,NULL,NULL,'$status','$isdelete')"); 
+mysqli_query($conn, "insert into transaksi values ('','$hewan_id','$costumer_id','$toko_id','$fasilitas_id',NOW(),'$alamat','$keterangan','$biaya_perhari','$lama_penitipan','$sub_total','$metode_pembayaran',NULL,NULL,NULL,'$status','$isdelete')"); 
 echo "<script>alert('Data Penitipan Ditambahkan.');window.location='titipkan_hewan.php';</script>";
 endif; ?>
 
