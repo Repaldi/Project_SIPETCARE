@@ -222,7 +222,9 @@ if (isset($_GET['id'])) {
  
                 </div><!--End InvoiceBot-->
   </div><!--End Invoice-->
- 
+  <script>
+window.print();
+</script>
 </body>
  
 </html>
