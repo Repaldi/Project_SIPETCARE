@@ -21,21 +21,22 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
         <?php include "menu.php";?>
     </div>
     <div class="content">
-        <h3> Data Costumer </h3>
+        <h3> Data User </h3>
         <div class="breadcrumb">
 
             <div class="main-content">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th>No</th>
-                        <th>Nama Lengkap</th>
-                        <th>Username</th>
                         <th>Email</th>
+                        <th>Username</th>
+                        <th>password</th>
+                        <th>Level</th>
                         <th>Action</th>
                     </tr>
 
                     <?php
-                    $query = mysqli_query($conn, "SELECT * FROM user INNER JOIN costumer ON user.user_id = costumer.user_id ");
+                    $query = mysqli_query($conn, "SELECT * FROM user ");
                     if(mysqli_num_rows($query)>0){ ?>
                         <?php
                         $no = 1;
@@ -43,13 +44,14 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
                             ?>
                             <tr>
                                 <td><center><?php echo $no ?></center></td>
-                                <td><?php echo $data["nama_lengkap"];?></td>
-                                <td><?php echo $data["username"];?></td>
                                 <td><?php echo $data["email"];?></td>
+                                <td><?php echo $data["username"];?></td>
+                                <td><?php echo $data["password"];?></td>
+                                <td><?php echo $data["level"];?></td>
                                 <td>
 
-                                    <a href="data_costumer_edit.php?id=<?=$data['costumer_id']?>">Edit</a>
-                                    |  <a href="data_costumer_hapus.php?id=<?=$data['costumer_id']?>">Hapus</a>
+                                    <a href="data_user_edit.php?id=<?=$data['user_id']?>">Edit</a>
+                                    |  <a href="data_user_hapus.php?id=<?=$data['user_id']?>">Hapus</a>
                                 </td>
                             </tr>
                             <?php $no++; } ?>

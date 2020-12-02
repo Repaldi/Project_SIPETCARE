@@ -26,25 +26,28 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
 
         <?php
         $id = $_GET['id'];
-        $query = mysqli_query($conn, "SELECT * FROM user INNER JOIN costumer ON user.user_id = costumer.user_id AND costumer.costumer_id='$id'");
+        $query = mysqli_query($conn, "SELECT * FROM user WHERE user_id='$id'");
         $data = mysqli_fetch_array($query);
         ?>
 
         <div class="main-content">
             <div class="row">
                 <div class="column">
-                    <h2>Edit Data Costumer</h2>
-                    <form action="data_costumer_proses_update.php" method="post" >
-                        <label><i class="fa fa-envelope"></i>Nama Lengkap</label>
-                        <input type="hidden" name="id" value="<?php echo $data['costumer_id']; ?>" >
-                        <input type="text" value=" <?php echo $data["nama_lengkap"];?>" name="nama_lengkap">
+                    <h2>Edit Data User</h2>
+                    <form action="data_user_proses_edit.php" method="post" >
+                        <label><i class="fa fa-envelope"></i>Email</label>
+                        <input type="hidden" name="id" value="<?php echo $data['user_id']; ?>" >
+                        <input type="text" value=" <?php echo $data["email"];?>" name="email">
 
-                        <label for="username"><i class="fa fa-cogs"></i> Username</label>
+                        <label for="username"><i class="fa fa-user"></i> Username</label>
                         <input type="text" value=" <?php echo $data["username"];?>" id="myInput"   name="username">
 
 
-                        <label for="username"><i class="fa fa-edit"></i>Email</label>
-                        <input type="text"  value=" <?php echo $data["email"];?>"  id="myInput1" name="email">
+                        <label for="username"><i class="fa fa-edit"></i>Password</label>
+                        <input type="text"  value=" <?php echo $data["password"];?>"  id="myInput1" name="password">
+
+                        <label for="username"><i class="fa fa-edit"></i>Level</label>
+                        <input type="text"  value=" <?php echo $data["level"];?>"  id="myInput1" name="level">
 
                         <button name="submit" type="submit" value="Save Password" class="btn" <i class="fa fa-floppy-o" aria-hidden="true">Simpan   </i>
                         </button>

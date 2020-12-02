@@ -21,21 +21,23 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
         <?php include "menu.php";?>
     </div>
     <div class="content">
-        <h3> Data Costumer </h3>
+        <h3> Data Hewan </h3>
         <div class="breadcrumb">
 
             <div class="main-content">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th>No</th>
-                        <th>Nama Lengkap</th>
-                        <th>Username</th>
-                        <th>Email</th>
+                        <th>Nama Hewan </th>
+                        <th>Jenis Hewan </th>
+                        <th>Umur</th>
+                        <th>Deskripsi</th>
+                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
 
                     <?php
-                    $query = mysqli_query($conn, "SELECT * FROM user INNER JOIN costumer ON user.user_id = costumer.user_id ");
+                    $query = mysqli_query($conn, "SELECT * FROM hewan ");
                     if(mysqli_num_rows($query)>0){ ?>
                         <?php
                         $no = 1;
@@ -43,13 +45,14 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
                             ?>
                             <tr>
                                 <td><center><?php echo $no ?></center></td>
-                                <td><?php echo $data["nama_lengkap"];?></td>
-                                <td><?php echo $data["username"];?></td>
-                                <td><?php echo $data["email"];?></td>
+                                <td><?php echo $data["nama_hewan"];?></td>
+                                <td><?php echo $data["jenis_hewan"];?></td>
+                                <td><?php echo $data["umur"];?></td>
+                                <td><?php echo $data["deskripsi"];?></td>
+                                <td><img src="../asset/admin/gambar/<?php echo $data['foto']?>" width="50px" alt="Foto Hewan"></td>
                                 <td>
 
-                                    <a href="data_costumer_edit.php?id=<?=$data['costumer_id']?>">Edit</a>
-                                    |  <a href="data_costumer_hapus.php?id=<?=$data['costumer_id']?>">Hapus</a>
+                                    <a href="data_hewan_edit.php?id=<?=$data['hewan_id']?>">Edit</a>
                                 </td>
                             </tr>
                             <?php $no++; } ?>

@@ -26,25 +26,33 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
 
         <?php
         $id = $_GET['id'];
-        $query = mysqli_query($conn, "SELECT * FROM user INNER JOIN costumer ON user.user_id = costumer.user_id AND costumer.costumer_id='$id'");
+        $query = mysqli_query($conn, "SELECT * FROM admin WHERE admin_id='$id'");
         $data = mysqli_fetch_array($query);
         ?>
 
         <div class="main-content">
             <div class="row">
                 <div class="column">
-                    <h2>Edit Data Costumer</h2>
-                    <form action="data_costumer_proses_update.php" method="post" >
+                    <h2>Edit Data Admin</h2>
+                    <form action="data_admin_proses_update.php" method="post" >
+                        <input type="hidden" name="admin_id" value="<?php echo $data['admin_id']; ?>" >
                         <label><i class="fa fa-envelope"></i>Nama Lengkap</label>
-                        <input type="hidden" name="id" value="<?php echo $data['costumer_id']; ?>" >
-                        <input type="text" value=" <?php echo $data["nama_lengkap"];?>" name="nama_lengkap">
+                        <input type="text" value=" <?php echo $data['nama_lengkap'];?>" name="nama_lengkap">
 
-                        <label for="username"><i class="fa fa-cogs"></i> Username</label>
-                        <input type="text" value=" <?php echo $data["username"];?>" id="myInput"   name="username">
+                        <label for="username"><i class="fa fa-cogs"></i>Jenis Kelamin</label>
+                        <input type="text" value=" <?php echo $data['jenis_kelamin'];?>"   name="jenis_kelamin">
 
 
-                        <label for="username"><i class="fa fa-edit"></i>Email</label>
-                        <input type="text"  value=" <?php echo $data["email"];?>"  id="myInput1" name="email">
+                        <label for="username"><i class="fa fa-edit"></i>Alamat</label>
+                        <input type="text"  value=" <?php echo $data["alamat"];?>"   name="alamat">
+
+                        <label for="username"><i class="fa fa-edit"></i>Nomor Hp</label>
+                        <input type="text"  value=" <?php echo $data["nomor_hp"];?>"  name="nomor_hp">
+
+                        <div class="card">
+                            <img src="../asset/admin/gambar/<?php echo $data['foto'];?>" alt="Foto Profil" width="100%" >
+                            <input type="file" name="foto" value="<?php echo $data['foto'];?>">
+                        </div>
 
                         <button name="submit" type="submit" value="Save Password" class="btn" <i class="fa fa-floppy-o" aria-hidden="true">Simpan   </i>
                         </button>

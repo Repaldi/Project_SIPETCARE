@@ -34,7 +34,7 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
             $passwordbaru =$_POST['passwordbaru'];
             $konfirmasipassword =$_POST['konfirmasipassword'];
 
-            $query = mysqli_query($conn,"SELECT email,password FROM user WHERE email ='$email' AND password ='$passwordlama'");
+            $query = mysqli_query($conn,"SELECT user_id,email,password FROM user WHERE user_id='$user_id' AND  email ='$email' AND password ='$passwordlama'");
             $num = mysqli_fetch_array($query);
 
             if($num>0){
@@ -50,30 +50,34 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
 
         ?>
         <div class="main-content">
-            <div class="row">
-                <div class="column">
-                    <h2>Edit Pasword</h2>
-                    <form action="" method="post"  onsubmit="return valid();">
-                        <label><i class="fa fa-envelope"></i> Email</label>
-                        <input type="email"  name="email">
-
-                        <label for="username"><i class="fa fa-cogs"></i> password lama</label>
-                        <input type="password"  id="myInput"   name="passwordlama">
-
-
-                        <label for="username"><i class="fa fa-edit"></i>pasword baru</label>
-                        <input type="password"   id="myInput1" name="passwordbaru">
-
+            <h2>Edit Password</h2>
+            <form class="form-style-9" method="post"  onsubmit="return valid();">
+                <ul>
+                    <li>
+                        <label for="username"><i class="fa fa-envelope"></i>Email</label>
+                        <input type="text" name="email" class="field-style field-full align-none" placeholder="Email" />
+                    </li>
+                    <li>
+                        <label for="username"><i class="fa fa-cogs"></i>pasword lama</label>
+                        <input type="password" id="myInput" name="passwordlama" class="field-style field-full align-none" placeholder="password lama" />
+                    </li>
+                    <li>
+                        <label for="username"><i class="fa fa-edit"></i>password baru</label>
+                        <input type="password" id="myInput1" name="passwordbaru" class="field-style field-full align-none" placeholder="password baru" />
+                    </li>
+                    <li>
                         <label for="username"><i class="fa fa-edit"></i>Konfirmasi Password</label>
-                        <input type="password"   id="myInput2" name="konfirmasipassword">
-
+                        <input type="password" id="myInput2" name="konfirmasipassword" class="field-style field-full align-none" placeholder="konfirmasi pasword" />
+                    </li>
+                    <li>
                         <input type="checkbox" onclick="myFunction()">Show Password
-                        <button name="submit" type="submit" value="Save Password" class="btn" <i class="fa fa-floppy-o" aria-hidden="true"> Ubah Sandi  </i>
-                        </button>
-                    </form>
-
-                </div>
-            </div>
+                    </li>
+                    <li>
+                        <input name="submit" type="submit" value="Ubah Sandi" />
+                    </li>
+                </ul>
+            </form>
+        </div>
     </body>
     </html>
 
