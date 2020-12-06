@@ -36,17 +36,17 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
                     <h2>Edit Data Costumer</h2>
                     <form action="data_costumer_proses_update.php" method="post" >
                         <label><i class="fa fa-envelope"></i>Nama Lengkap</label>
-                        <input type="hidden" name="id" value="<?php echo $data['costumer_id']; ?>" >
-                        <input type="text" value=" <?php echo $data["nama_lengkap"];?>" name="nama_lengkap">
+                        <input type="hidden" name="costumer_id" value="<?php echo $data['costumer_id']; ?>" >
+                        <input type="text" value="<?php echo $data["nama_lengkap"];?>" name="nama_lengkap">
 
                         <label for="username"><i class="fa fa-cogs"></i> Username</label>
-                        <input type="text" value=" <?php echo $data["username"];?>" id="myInput"   name="username">
+                        <input type="text" value="<?php echo $data["username"];?>" id="myInput"   name="username">
 
 
                         <label for="username"><i class="fa fa-edit"></i>Email</label>
-                        <input type="text"  value=" <?php echo $data["email"];?>"  id="myInput1" name="email">
+                        <input type="text"  value="<?php echo $data["email"];?>"  id="myInput1" name="email">
 
-                        <button name="submit" type="submit" value="Save Password" class="btn" <i class="fa fa-floppy-o" aria-hidden="true">Simpan   </i>
+                        <button name="submit" type="submit" value="Save Password" class="btn"> <i class="fa fa-floppy-o" aria-hidden="true"> Simpan   </i>
                         </button>
                     </form>
 

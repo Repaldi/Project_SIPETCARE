@@ -89,7 +89,7 @@ if(empty($data['admin_id'])) {
                 <label for="deskripsi_toko"><i class="fa fa-comment-o"></i> Deksripsi Toko</label>
                 <textarea name="deskripsi_toko" place rows="3" cols="48"><?php echo $data['deskripsi_toko']; ?> </textarea>
                 
-                <a class="btn" style=" float:right" href="profil_edit.php?id=<?php echo $data['toko_id']; ?>"><i class="fa fa-edit"> Edit Profil </i></a>
+                <a class="btn" style=" float:right" href="toko_edit.php?id=<?php echo $data['toko_id']; ?>"><i class="fa fa-edit"> Edit Profil </i></a>
             
         </div>
            

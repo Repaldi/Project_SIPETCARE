@@ -51,7 +51,7 @@ if(!empty($_SESSION['username']) AND !empty ($_SESSION['password'])AND ($_SESSIO
                                 <td>
 
                                     <a href="data_user_edit.php?id=<?=$data['user_id']?>">Edit</a>
-                                    |  <a href="data_user_hapus.php?id=<?=$data['user_id']?>">Hapus</a>
+                                    
                                 </td>
                             </tr>
                             <?php $no++; } ?>
